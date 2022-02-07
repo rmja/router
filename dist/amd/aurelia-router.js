@@ -1262,6 +1262,15 @@ define('aurelia-router', ['exports', 'aurelia-logging', 'aurelia-dependency-inje
             if (queryString) {
                 redirectLocation += '?' + queryString;
             }
+            var redirectQueryString = redirectInstruction.queryString;
+            if (redirectQueryString) {
+                if (queryString) {
+                    redirectLocation += '&' + redirectQueryString;
+                }
+                else {
+                    redirectLocation += '?' + redirectQueryString;
+                }
+            }
             return Promise.resolve(new Redirect(redirectLocation));
         });
     };
